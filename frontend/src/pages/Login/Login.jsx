@@ -25,7 +25,7 @@ const Login = () => {
       .required('Email address is required.')
       .email('Must be a valid email.')
       .max(50),
-    password: Yup.string().required('Passwroed is required.'),
+    password: Yup.string().required('Password is required.'),
   });
 
   return (
