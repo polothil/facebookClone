@@ -16,7 +16,6 @@ const userInfos = {
 
 const RegistrationForm = () => {
   const [user, setUser] = useState(userInfos);
-
   const { first_name, last_name, email, password, bYear, bMonth, bDay, gender } = user;
 
   const handleRegiterChange = (e) => {
@@ -81,7 +80,7 @@ const RegistrationForm = () => {
         >
           {(formik) => (
             <Form className='register_form'>
-              <div className='regi_line'>
+              <div className='reg_line'>
                 <RegisterInput
                   type='text'
                   name='first_name'
