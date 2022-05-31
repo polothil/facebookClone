@@ -258,6 +258,16 @@
 
 /* DoB & Gender errors end */
 
+/* Error & Success styles */
+.error_text {
+  color: #b94a48;
+}
+
+.success_text {
+  color: var(--green-color);
+}
+/* Error & Success styles end */
+
 /* media queries */
 @media (min-width: 539px) {
   .login_footer_wrap {

@@ -12,8 +12,8 @@ const DateOfBirthSelect = ({ bDay, bMonth, bYear, dateError, handleRegisterChang
   };
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
 
-  const view1 = useMediaQuery({ query: '(min-width: 539px' });
-  const view2 = useMediaQuery({ query: '(min-width: 850px' });
+  // const view1 = useMediaQuery({ query: '(min-width: 539px' });
+  // const view2 = useMediaQuery({ query: '(min-width: 850px' });
   const view3 = useMediaQuery({ query: '(min-width: 1170px' });
 
   return (

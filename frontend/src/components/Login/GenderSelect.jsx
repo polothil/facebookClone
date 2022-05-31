@@ -2,8 +2,8 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const GenderSelect = ({ genderError, handleRegisterChange }) => {
-  const view1 = useMediaQuery({ query: '(min-width: 539px' });
-  const view2 = useMediaQuery({ query: '(min-width: 850px' });
+  // const view1 = useMediaQuery({ query: '(min-width: 539px' });
+  // const view2 = useMediaQuery({ query: '(min-width: 850px' });
   const view3 = useMediaQuery({ query: '(min-width: 1170px' });
   return (
     <div
