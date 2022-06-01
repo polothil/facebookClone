@@ -21,7 +21,7 @@ const userInfos = {
   gender: '',
 };
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ setVisible }) => {
   const [user, setUser] = useState(userInfos);
   const { first_name, last_name, email, password, bYear, bMonth, bDay, gender } = user;
   const [dateError, setDateError] = useState('');
@@ -92,7 +92,7 @@ const RegistrationForm = () => {
     <div className='blur'>
       <div className='register'>
         <div className='register_header'>
-          <i className='exit_icon'></i>
+          <i className='exit_icon' onClick={() => setVisible(false)}></i>
           <span>Sign Up</span>
           <span>It's quick and easy</span>
         </div>
