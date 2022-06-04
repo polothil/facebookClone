@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ClickOutside from '../../../helpers/ClickOutside';
+import useClickOutside from '../../../helpers/useClickOutside';
 import { Return, Search } from '../../../svg';
 
 const SearchMenu = ({ color, setShowSearchMenu }) => {
@@ -11,7 +11,7 @@ const SearchMenu = ({ color, setShowSearchMenu }) => {
     input.current.focus();
   }, []);
 
-  ClickOutside(menu, () => setShowSearchMenu(false));
+  useClickOutside(menu, () => setShowSearchMenu(false));
   return (
     <div className='header_left search_area scrollbar' ref={menu}>
       <div className='search_wrap'>

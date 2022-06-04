@@ -81,3 +81,15 @@ a {
   width: 500px;
   background: red;
 }
+
+/* Scrollbar */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #aeafa1;
+  border-radius: 5px;
+}
+
+/* Scrollbar End*/

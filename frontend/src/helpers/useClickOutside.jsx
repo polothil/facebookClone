@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const ClickOutside = (ref, fun) => {
+const useClickOutside = (ref, fun) => {
   useEffect(() => {
     const listener = (e) => {
       if (!ref.current || ref.current.contains(e.target)) {
@@ -18,4 +18,4 @@ const ClickOutside = (ref, fun) => {
   }, [ref]);
 };
 
-export default ClickOutside;
+export default useClickOutside;

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import Header from '../../components/Header/Header';
-import ClickOutside from '../../helpers/ClickOutside';
+import useClickOutside from '../../helpers/useClickOutside';
 
 const Home = () => {
   const el = useRef(null);
-  ClickOutside(el, () => {
+  useClickOutside(el, () => {
     el.current.style.display = 'none';
   });
   return (
