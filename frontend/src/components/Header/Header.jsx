@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
@@ -15,8 +15,10 @@ import {
   Watch,
 } from '../../svg';
 import './Header.css';
+import SearchMenu from './SearchMenu/SearchMenu';
 
 const Header = () => {
+  const [showSearchMenu, setShowSearchMenu] = useState(false);
   const { user } = useSelector((user) => ({ ...user }));
   const color = '#65676b';
   return (
@@ -27,11 +29,14 @@ const Header = () => {
             <Logo />
           </div>
         </Link>
-        <div className='search search1'>
+        <div className='search search1' onClick={() => setShowSearchMenu(true)}>
           <Search color={color} />
           <input type='text' placeholder='Search Facebook' className='hide_input' />
         </div>
       </div>
+      {showSearchMenu && (
+        <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
+      )}
       <div className='header_middle'>
         <Link to='/' className='middle_icon active'>
           <HomeActive />
