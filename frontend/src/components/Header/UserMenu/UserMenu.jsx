@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import DisplayAccessibility from './DisplayAccessibility';
+import HelpSupport from './HelpSupport';
 import SettingsPrivacy from './SettingsPrivacy';
 
 const UserMenu = ({ user }) => {
-  const [visible, setVisible] = useState(1);
+  const [visible, setVisible] = useState(0);
   return (
     <div className='mmenu'>
       {visible === 0 && (
         <div>
-          <Link to={'/profile'} className='mmenu_header hover3'>
+          <Link to='/profile' className='mmenu_header hover3'>
             <img src={user?.picture} alt='' />
             <div className='mmenu_col'>
               <span>
@@ -28,7 +30,12 @@ const UserMenu = ({ user }) => {
             </div>
           </div>
           <div className='mmenu_splitter'></div>
-          <div className='mmenu_item hover3'>
+          <div
+            className='mmenu_item hover3'
+            onClick={() => {
+              setVisible(1);
+            }}
+          >
             <div className='small_circle'>
               <i className='settings_filled_icon'></i>
             </div>
@@ -37,7 +44,12 @@ const UserMenu = ({ user }) => {
               <i className='right_icon'></i>
             </div>
           </div>
-          <div className='mmenu_item hover3'>
+          <div
+            className='mmenu_item hover3'
+            onClick={() => {
+              setVisible(2);
+            }}
+          >
             <div className='small_circle'>
               <i className='help_filled_icon'></i>
             </div>
@@ -46,11 +58,16 @@ const UserMenu = ({ user }) => {
               <i className='right_icon'></i>
             </div>
           </div>
-          <div className='mmenu_item hover3'>
+          <div
+            className='mmenu_item hover3'
+            onClick={() => {
+              setVisible(3);
+            }}
+          >
             <div className='small_circle'>
               <i className='dark_filled_icon'></i>
             </div>
-            <span>Display & Accessibilities</span>
+            <span>Display & Accessibility</span>
             <div className='rArrow'>
               <i className='right_icon'></i>
             </div>
@@ -63,7 +80,9 @@ const UserMenu = ({ user }) => {
           </div>
         </div>
       )}
-      {visible === 1 && <SettingsPrivacy />}
+      {visible === 1 && <SettingsPrivacy setVisible={setVisible} />}
+      {visible === 2 && <HelpSupport setVisible={setVisible} />}
+      {visible === 3 && <DisplayAccessibility setVisible={setVisible} />}
     </div>
   );
 };
