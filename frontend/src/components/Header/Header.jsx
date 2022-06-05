@@ -23,11 +23,14 @@ import UserMenu from './UserMenu/UserMenu';
 const Header = () => {
   const [showSearchMenu, setShowSearchMenu] = useState(false);
   const [showAllMenu, setShowAllMenu] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const { user } = useSelector((user) => ({ ...user }));
   const allMenu = useRef(null);
+  const usermenu = useRef(null);
   const color = '#65676b';
 
   useClickOutside(allMenu, () => setShowAllMenu(false));
+  useClickOutside(usermenu, () => setShowUserMenu(false));
   return (
     <header>
       <div className='header_left'>
@@ -82,9 +85,11 @@ const Header = () => {
           <Notifications />
           <div className='right_notification'>5</div>
         </div>
-        <div className='circle_icon hover1'>
-          <ArrowDown />
-          <UserMenu user={user} />
+        <div className='circle_icon hover1' ref={usermenu}>
+          <div onClick={() => setShowUserMenu((prev) => !prev)}>
+            <ArrowDown />
+          </div>
+          {showUserMenu && <UserMenu user={user} />}
         </div>
       </div>
     </header>
