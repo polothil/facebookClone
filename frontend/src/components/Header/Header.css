@@ -512,6 +512,7 @@ header {
 .absolute_wrap label input {
   width: 20px;
   height: 20px;
+  accent-color: var(--color-secondary);
 }
 
 /* User Menu End*/

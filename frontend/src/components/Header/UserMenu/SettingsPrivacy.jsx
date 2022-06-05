@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SettingsPrivacy = (setVisible) => {
+const SettingsPrivacy = ({ setVisible }) => {
   return (
     <div className='absolute_wrap'>
       <div className='absolute_wrap_header'>
