@@ -18,6 +18,7 @@ import './Header.css';
 import SearchMenu from './SearchMenu/SearchMenu';
 import AllMenu from './AllMenu/AllMenu';
 import useClickOutside from '../../helpers/useClickOutside';
+import UserMenu from './UserMenu/UserMenu';
 
 const Header = () => {
   const [showSearchMenu, setShowSearchMenu] = useState(false);
@@ -83,6 +84,7 @@ const Header = () => {
         </div>
         <div className='circle_icon hover1'>
           <ArrowDown />
+          <UserMenu user={user} />
         </div>
       </div>
     </header>
