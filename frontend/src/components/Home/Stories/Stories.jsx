@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Plus } from '../../../svg';
 import { stories } from '../../../data/home';
 import './Stories.css';
-import Story from './Story';
+import Story from './Story/Story';
 
 const Stories = () => {
   return (
