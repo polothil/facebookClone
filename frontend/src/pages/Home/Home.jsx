@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import CreatePost from '../../components/CreatePost/CreatePost';
 import Header from '../../components/Header/Header';
 import LeftHome from '../../components/Home/LeftHome/LeftHome';
 import RightHome from '../../components/Home/RightHome/RightHome';
@@ -15,6 +16,7 @@ const Home = () => {
       <LeftHome user={user} />
       <div className='home_middle'>
         <Stories />
+        <CreatePost user={user} />
       </div>
       <RightHome user={user} />
     </div>
