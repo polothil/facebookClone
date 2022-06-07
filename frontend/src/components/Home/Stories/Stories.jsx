@@ -30,7 +30,7 @@ const Stories = () => {
   return (
     <div className='stories'>
       <div className='create_story_card'>
-        <img className='create_story_img' src='images/default_pic.png' alt='' />
+        <img className='create_story_img' src='../../images/default_pic.png' alt='' />
         <div className='plus_story'>
           <Plus color='#fff' />
         </div>

@@ -63,7 +63,7 @@ const LeftHome = ({ user }) => {
         />
         <Shortcut
           link='https://www.instagram.com'
-          img='images/insta.png'
+          img='.../../../../images/insta.png'
           name='My Instagram'
         />
       </div>
