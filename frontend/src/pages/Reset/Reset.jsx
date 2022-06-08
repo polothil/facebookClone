@@ -9,6 +9,7 @@ import SearchAccount from './SearchAccount/SearchAccount';
 import SendEmail from './SendEmail/SendEmail';
 import CodeVerification from './CodeVerification/CodeVerification';
 import Footer from '../../components/Login/Footer';
+import ChangePassword from './ChangePassword/ChangePassword';
 
 const Reset = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -16,8 +17,10 @@ const Reset = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(0);
 
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
@@ -51,6 +54,16 @@ const Reset = () => {
         {visible === 1 && <SendEmail user={user} />}
         {visible === 2 && (
           <CodeVerification user={user} code={code} setCode={setCode} error={error} />
+        )}
+        {visible === 3 && (
+          <ChangePassword
+            user={user}
+            password={password}
+            setPassword={setPassword}
+            confirmPassword={confirmPassword}
+            setConfirmPassword={setConfirmPassword}
+            error={error}
+          />
         )}
       </div>
       <Footer />
