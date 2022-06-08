@@ -6,8 +6,8 @@ import * as Yup from 'yup';
 import DotLoader from 'react-spinners/DotLoader';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import cookies from 'js-cookie';
 
 const loginInfos = {
   email: '',
