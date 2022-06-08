@@ -62,7 +62,7 @@ exports.register = async (req, res) => {
       gender,
     }).save();
 
-    const emailVerificationToken = generateToken({ id: user._id.toString() }, '30m');
+    const emailVerificationToken = generateToken({ id: user._id.toString() }, '1d');
     const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
     sendVerificationEmail(user.email, user.first_name, url);
 
@@ -140,6 +140,28 @@ exports.login = async (req, res) => {
       last_name: user.last_name,
       token: token,
       verified: user.verified,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.sendVerification = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const user = await User.findById(id);
+    if (user.verified === true) {
+      return res.status(400).json({
+        message: 'This account is already verified.',
+      });
+    }
+    const emailVerificationToken = generateToken({ id: user._id.toString() }, '1d');
+    const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
+    sendVerificationEmail(user.email, user.first_name, url);
+    res.status(200).json({
+      message: 'Check your inbox for verification email.',
     });
   } catch (error) {
     res.status(500).json({
