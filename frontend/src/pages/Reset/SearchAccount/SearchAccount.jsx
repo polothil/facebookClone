@@ -10,7 +10,6 @@ const SearchAccount = ({
   error,
   setEmail,
   setError,
-  loading,
   setLoading,
   setUserInfos,
   setVisible,

@@ -56,13 +56,22 @@ const Reset = () => {
             setEmail={setEmail}
             error={error}
             setError={setError}
-            loading={loading}
             setLoading={setLoading}
             setUserInfos={setUserInfos}
             setVisible={setVisible}
           />
         )}
-        {visible === 1 && userInfos && <SendEmail userInfos={userInfos} />}
+        {visible === 1 && userInfos && (
+          <SendEmail
+            userInfos={userInfos}
+            setUserInfos={setUserInfos}
+            error={error}
+            setError={setError}
+            loading={loading}
+            setLoading={setLoading}
+            setVisible={setVisible}
+          />
+        )}
         {visible === 2 && (
           <CodeVerification user={user} code={code} setCode={setCode} error={error} />
         )}

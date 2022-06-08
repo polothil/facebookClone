@@ -32,7 +32,7 @@ const CodeVerification = ({ code, error, setCode }) => {
               onChange={(e) => setCode(e.target.value)}
               placeholder='Code'
             />
-            {error && <div className='error_tetx'>{error}</div>}
+            {error && <div className='error_text'>{error}</div>}
             <div className='reset_form_btns'>
               <Link to='/login' className='gray_btn'>
                 Cancel
