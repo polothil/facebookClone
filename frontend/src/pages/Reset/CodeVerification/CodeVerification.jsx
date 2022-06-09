@@ -49,9 +49,7 @@ const CodeVerification = ({
           code,
         }}
         validationSchema={validateCode}
-        onSubmit={() => {
-          verifyCode();
-        }}
+        onSubmit={() => verifyCode()}
       >
         {(formik) => (
           <Form>
