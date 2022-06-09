@@ -160,3 +160,29 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.overflow_a {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.input2 {
+  position: relative;
+  display: block;
+  font-size: 15px;
+  min-height: 1px !important;
+}
+
+.moveleft {
+  transform: translateX(-10px);
+}
+
+.movepicker2 {
+  right: 1rem;
+  top: 9.7rem;
+  z-index: 999;
+}
+
+.images_input {
+  display: flex;
+}
