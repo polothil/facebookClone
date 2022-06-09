@@ -7,6 +7,7 @@ import ImagePreview from './ImagePreview/ImagePreview';
 const CreatePostPopup = ({ user }) => {
   const [text, setText] = useState('');
   const [showPrev, setShowPrev] = useState(true);
+  const [images, setImages] = useState([]);
 
   return (
     <div className='blur'>
@@ -36,7 +37,13 @@ const CreatePostPopup = ({ user }) => {
             <EmojiPickerBackground text={text} setText={setText} user={user} />
           </>
         ) : (
-          <ImagePreview text={text} setText={setText} user={user} />
+          <ImagePreview
+            text={text}
+            setText={setText}
+            user={user}
+            images={images}
+            setImages={setImages}
+          />
         )}
         <AddToYourPost />
         <button className='post_submit'>Post</button>
