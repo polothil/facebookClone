@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 const { readdirSync } = require('fs');
 const dotenv = require('dotenv');
 
@@ -13,6 +14,11 @@ const options = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(options));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 
 // const userRoute = require('./routes/user');
 // app.use('/', userRoute);
