@@ -7,11 +7,13 @@ import EmojiPickerBackground from './EmojiPickerBackground/EmojiPickerBackground
 import ImagePreview from './ImagePreview/ImagePreview';
 import PulseLoader from 'react-spinners/PulseLoader';
 import './CreatePostPopup.css';
+import PostError from './PostError/PostError';
 
 const CreatePostPopup = ({ user, setCreatePostVisible }) => {
   const [text, setText] = useState('');
   const [showPrev, setShowPrev] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [images, setImages] = useState([]);
   const [background, setBackground] = useState('');
   const popup = useRef(null);
@@ -22,17 +24,28 @@ const CreatePostPopup = ({ user, setCreatePostVisible }) => {
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
-      const res = await createPost(null, background, text, null, user.id, user.token);
+      const response = await createPost(
+        null,
+        background,
+        text,
+        null,
+        user.id,
+        user.token
+      );
       setLoading(false);
-      setBackground('');
-      setText('');
-      setCreatePostVisible(false);
+
+      if (response === 'ok') {
+        setBackground('');
+        setText('');
+        setCreatePostVisible(false);
+      } else setError(response);
     }
   };
 
   return (
     <div className='blur'>
       <div className='postBox' ref={popup}>
+        {error && <PostError error={error} setError={setError} />}
         <div className='box_header'>
           <div className='small_circle' onClick={() => setCreatePostVisible(false)}>
             <i className='exit_icon'></i>

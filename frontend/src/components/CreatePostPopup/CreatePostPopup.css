@@ -441,3 +441,33 @@
   height: 360px;
   margin-top: 10px;
 }
+
+/* Post Error */
+.postError {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  opacity: 0.8;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  color: #b94a48;
+  animation: anim 0.3s ease-in;
+  border-radius: 10px;
+}
+/* Post Error End*/
+
+@keyframes anim {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
