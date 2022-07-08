@@ -53,11 +53,15 @@ const CreatePostPopup = ({ user, setCreatePostVisible }) => {
         formData.append('file', image);
       });
       const response = await uploadImages(formData, path, user.token);
-      await createPost(null, null, text, response, user.id, user.token);
+      const res = await createPost(null, null, text, response, user.id, user.token);
       setLoading(false);
-      setText('');
-      setCreatePostVisible(false);
-      setImages('');
+      if (res === 'ok') {
+        setText('');
+        setCreatePostVisible(false);
+        setImages('');
+      } else {
+        setError(res);
+      }
     } else if (text) {
       const response = await createPost(null, null, text, null, user.id, user.token);
       setLoading(false);
@@ -114,6 +118,7 @@ const CreatePostPopup = ({ user, setCreatePostVisible }) => {
             images={images}
             setImages={setImages}
             setShowPrev={setShowPrev}
+            setError={setError}
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev} />

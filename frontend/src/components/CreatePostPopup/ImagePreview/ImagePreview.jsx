@@ -1,12 +1,29 @@
 import React, { useRef } from 'react';
 import EmojiPickerBackground from '../EmojiPickerBackground/EmojiPickerBackground';
 
-const ImagePreview = ({ text, setText, user, images, setImages, setShowPrev }) => {
+const ImagePreview = ({
+  text,
+  setText,
+  user,
+  images,
+  setImages,
+  setShowPrev,
+  setError,
+}) => {
   const imageInputRef = useRef(null);
 
   const handleImages = (e) => {
     let files = Array.from(e.target.files);
     files.forEach((file) => {
+      if (file.type !== ('image/jpeg' || 'image/png' || 'image/webp' || 'image/gif')) {
+        setError(`${file.name} format is unsupported!`);
+        files = files.filter((item) => item.name !== file.name);
+        return;
+      } else if (file.size > 1024 * 1024 * 5) {
+        setError('File size exceeds 5mb.');
+        files = files.filter((item) => item.name !== file.name);
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (readerEvent) => {
@@ -19,7 +36,14 @@ const ImagePreview = ({ text, setText, user, images, setImages, setShowPrev }) =
     <div className='overflow_a scrollbar'>
       <EmojiPickerBackground text={text} setText={setText} user={user} type2 />
       <div className='add_pics_wrap'>
-        <input type='file' multiple hidden ref={imageInputRef} onChange={handleImages} />
+        <input
+          type='file'
+          accept='image/jpeg, image/png, image/webp, image/gif'
+          multiple
+          hidden
+          ref={imageInputRef}
+          onChange={handleImages}
+        />
         {images && images.length ? (
           <div className='add_pics_inside1 p0'>
             <div className='preview_actions'>
