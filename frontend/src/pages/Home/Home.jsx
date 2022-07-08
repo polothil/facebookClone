@@ -9,7 +9,7 @@ import Stories from '../../components/Home/Stories/Stories';
 
 import './Home.css';
 
-const Home = ({ setCreatePostVisible }) => {
+const Home = ({ setCreatePostVisible, posts }) => {
   const { user } = useSelector((user) => ({ ...user }));
   return (
     <div className='home'>
@@ -19,6 +19,11 @@ const Home = ({ setCreatePostVisible }) => {
         <Stories />
         {!user.verified && <SendVerification user={user} />}
         <CreatePost user={user} setCreatePostVisible={setCreatePostVisible} />
+        {posts.map((post) => (
+          <div className='post' key={post._id}>
+            {post._id}
+          </div>
+        ))}
       </div>
       <RightHome user={user} />
     </div>
