@@ -8,6 +8,8 @@ import ImagePreview from './ImagePreview/ImagePreview';
 import PulseLoader from 'react-spinners/PulseLoader';
 import './CreatePostPopup.css';
 import PostError from './PostError/PostError';
+import dataUriToBlob from '../../helpers/dataUriToBlob';
+import { uploadImages } from '../../functions/uploadImages';
 
 const CreatePostPopup = ({ user, setCreatePostVisible }) => {
   const [text, setText] = useState('');
@@ -39,6 +41,34 @@ const CreatePostPopup = ({ user, setCreatePostVisible }) => {
         setText('');
         setCreatePostVisible(false);
       } else setError(response);
+    } else if (images && images.length) {
+      setLoading(true);
+      const postImages = images.map((img) => {
+        return dataUriToBlob(img);
+      });
+      const path = `${user.username}/post Images`;
+      let formData = new FormData();
+      formData.append('path', path);
+      postImages.forEach((image) => {
+        formData.append('file', image);
+      });
+      const response = await uploadImages(formData, path, user.token);
+      await createPost(null, null, text, response, user.id, user.token);
+      setLoading(false);
+      setText('');
+      setCreatePostVisible(false);
+      setImages('');
+    } else if (text) {
+      const response = await createPost(null, null, text, null, user.id, user.token);
+      setLoading(false);
+
+      if (response === 'ok') {
+        setBackground('');
+        setText('');
+        setCreatePostVisible(false);
+      } else setError(response);
+    } else {
+      console.log('Nothing');
     }
   };
 
