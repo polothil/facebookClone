@@ -6,6 +6,7 @@ import LeftHome from '../../components/Home/LeftHome/LeftHome';
 import RightHome from '../../components/Home/RightHome/RightHome';
 import SendVerification from '../../components/Home/SendVerification/SendVerification';
 import Stories from '../../components/Home/Stories/Stories';
+import Post from '../../components/Post/Post';
 
 import './Home.css';
 
@@ -19,11 +20,11 @@ const Home = ({ setCreatePostVisible, posts }) => {
         <Stories />
         {!user.verified && <SendVerification user={user} />}
         <CreatePost user={user} setCreatePostVisible={setCreatePostVisible} />
-        {posts.map((post) => (
-          <div className='post' key={post._id}>
-            {post._id}
-          </div>
-        ))}
+        <div className='posts'>
+          {posts.map((post) => (
+            <Post post={post} key={post._id} />
+          ))}
+        </div>
       </div>
       <RightHome user={user} />
     </div>
