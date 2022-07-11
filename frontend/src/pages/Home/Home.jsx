@@ -18,7 +18,7 @@ const Home = ({ setCreatePostVisible, posts }) => {
 
   useEffect(() => {
     setHeight(middle.current.clientHeight);
-  }, []);
+  }, [posts]);
 
   return (
     <div className='home' style={{ height: `${height + 100}px` }}>
