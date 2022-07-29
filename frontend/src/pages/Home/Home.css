@@ -121,7 +121,7 @@
   }
 
   .stories {
-    width: 113%;
+    width: 112%;
   }
 
   .home_middle {
@@ -131,7 +131,7 @@
 
 @media (max-width: 805px) {
   .stories {
-    grid-template-columns: repeat(6, 13vw);
+    grid-template-columns: repeat(6, 12.7vw);
   }
 
   .story_profile_name,

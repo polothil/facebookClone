@@ -4,8 +4,9 @@ import Moment from 'react-moment';
 import './Post.css';
 import { Dots, Public } from '../../svg';
 import ReactsPopup from './ReactsPopup';
+import CreateComment from './CreateComment';
 
-const Post = ({ post }) => {
+const Post = ({ post, user }) => {
   const [visible, setVisible] = useState(false);
   return (
     <div className='post'>
@@ -103,6 +104,10 @@ const Post = ({ post }) => {
           <i className='share_icon'></i>
           <span>Share</span>
         </div>
+      </div>
+      <div className='comments_wrap'>
+        <div className='comments_order'></div>
+        <CreateComment user={user} />
       </div>
     </div>
   );
